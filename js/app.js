@@ -1,29 +1,24 @@
-Vue.component('task-list',{
-    template:
-    `           <div>
-                    <task v-for="task in tasks" v-text="task.description" :key="task.id"></task>
-                </div>
-    `,
+Vue.component('message', {
+    props:['title','body']
+    ,
     data(){
-        return{
-            tasks:[
-                {description:"go to the store",completed:true},
-                {description:"play music",completed:false},
-                {description:"eat the apple",completed:true},
-                {description:"do some code",completed:false},
-                {description:"dance",completed:true},
-                {description:"do the work",completed:false},
-                {description:"submit assignment",completed:false},
-                {description:"visit college",completed:false},
-            ]
+        return {
+            isVisible:true,
         }
-    }
-});
-
-Vue.component('task',{
-    template:`<li><slot></slot></li>`
+    },
+    template: `
+    <article class="message" v-show="isVisible">
+    <div class="message-header">
+        <p>{{title}}</p>
+        <button class="delete" aria-label="delete" @click="isVisible = false"></button>
+    </div>
+    <div class="message-body">
+        {{body}}
+    </div>
+    </article> 
+    `
 })
 
 new Vue({
-    el:'#app'
+    el: '#app'
 })
