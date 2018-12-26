@@ -1,10 +1,11 @@
+window.Event = new Vue();
 Vue.component('coupoun',{
     template:`
         <input class="form-control" placeholder = "please enter your coupoun code" @blur="onCoupounApplied">
     `,
     methods:{
         onCoupounApplied(){
-            this.$emit('applied');
+            Event.$emit('applied');
         }
     }
 })
@@ -17,5 +18,10 @@ new Vue({
         onCoupounApplied(){
             this.coupounApplied = true;
         }
+    },
+    created(){
+        Event.$on('applied',()=>{
+            alert("hello beautiful");
+        })
     }
 })
