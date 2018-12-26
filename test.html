@@ -13,21 +13,8 @@
     <div class="" id="app">
 
         <div class="container">
-            <h1>All Tasks</h1>
-            <div class="form-check" v-for="(task,index) in tasks">
-                <input :id="index" type="checkbox" class="form-check-input" v-model="task.completed">
-                <label :for="index" class="form-check-label">{{task.description}}</label>
-            </div>
-
-            <h1>Completed Task</h1>
-            <ul>
-                <li v-for="task in completeTasks" v-text="task.description"></li>
-            </ul>
-
-            <h2>Incomplete Tasks</h2>
-            <ul>
-                <li v-for="task in incompleteTasks" v-text="task.description"></li>
-            </ul>
+           <task-list>
+           </task-list>
         </div>
     </div>
 
