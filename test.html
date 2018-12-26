@@ -7,15 +7,21 @@
     <title>Document</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" />
 </head>
 
 <body>
     <div class="container" id="app">
-        <h1>Please enter your coupoun below:</h1>
-        <coupoun @applied = "onCoupounApplied"></coupoun>
 
-        <p v-show="coupounApplied">Your coupoun was applied successfully</p>
+       <modal v-show="showModal" @close="showModal = false">
+           <template slot="header">Header</template>
+           <template slot="content">Content</template>
+           <template slot="footer">
+                <button class="button is-success" @click="showModal = false">Save changes</button>
+                <button class="button" @click="showModal=false">Cancel</button>
+           </template>
+       </modal>
+       <button type="button" class="btn btn-outline-primary" @click="showModal = !showModal">Click to show modal</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
