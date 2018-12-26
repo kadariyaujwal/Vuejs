@@ -1,20 +1,63 @@
-Vue.component('modal', {
+Vue.component('tabs', {
     template: `
-        <div class="modal is-active">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    <slot></slot>
-                </div>
+        <div>
+            <div class="tabs">
+                <ul>
+                    <li v-for="tab in tabs" :class="{ 'is-active' : tab.isActive}">
+                        <a :href="tab.href" @click="selectTab(tab)">{{tab.name}}</a>
+                    </li>
+                </ul>
             </div>
-            <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
-        </div>
-    `
-})
 
+            <div class="tab-details">
+                <slot></slot>
+            </div>
+        </div>
+    `,
+    data(){
+        return{
+            tabs:[]
+        }
+    },
+    created(){
+        this.tabs=this.$children;
+    },
+    methods:{
+        selectTab(currentTab){
+            this.tabs.forEach(function(tab){
+                tab.isActive = false;
+            });
+            currentTab.isActive=true;
+        }
+    }
+});
+Vue.component('tab', {
+    template: `
+        <div v-show="isActive">
+            <slot></slot>
+        </div>
+    `,
+    data() {
+        return {
+          isActive:false,
+        }
+    },
+    mounted(){
+        this.isActive = this.selected;
+    },
+    computed:{
+        href(){
+            return "#"+this.name.toLowerCase().replace(/ /g,'-'); 
+        }
+    },
+    props:{
+        name:{required:true},
+        selected:{default:false}
+    }
+})
 new Vue({
     el: '#app',
-    data:{
-        showModal:false
+    data: {
+        selected: true,
     }
 })

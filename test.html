@@ -12,12 +12,23 @@
 
 <body>
     <div class="" id="app">
-       <div class="box">
-           <modal v-show="showModal" @close="showModal=false">
-               <p>My awesome modal</p>
-           </modal>
-           <button @click="showModal=true">Show modal</button>
-       </div>
+        
+
+        <tabs>
+            <tab name="About" :selected = "selected">
+                <h1>This is about page</h1>
+            </tab>
+            <tab name="About us">
+                <h1>This is about us page</h1>
+            </tab>
+            <tab name="About our culture">
+                <h1>This is about our culture page</h1>
+            </tab>
+            <tab name="About our vision">
+                <h1>This is about our vision page</h1>
+            </tab>
+        </tabs>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
