@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="" id="app">
+
+        <div class="container">
+            <h1>All Tasks</h1>
+            <div class="form-check" v-for="(task,index) in tasks">
+                <input :id="index" type="checkbox" class="form-check-input" v-model="task.completed">
+                <label :for="index" class="form-check-label">{{task.description}}</label>
+            </div>
+
+            <h1>Completed Task</h1>
+            <ul>
+                <li v-for="task in completeTasks" v-text="task.description"></li>
+            </ul>
+
+            <h2>Incomplete Tasks</h2>
+            <ul>
+                <li v-for="task in incompleteTasks" v-text="task.description"></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
