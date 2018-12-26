@@ -39,11 +39,11 @@ Vue.component('tab', {
     `,
     data() {
         return {
-          isActive:false,
+          isActive:false,  //You should consider props to be immutable(meaning it cannot be changed), so make it mutable with data() or computed properties of vue.
         }
     },
     mounted(){
-        this.isActive = this.selected;
+        this.isActive = this.selected; 
     },
     computed:{
         href(){
