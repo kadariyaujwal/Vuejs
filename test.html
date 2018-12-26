@@ -13,15 +13,12 @@
 <body>
     <div class="container" id="app">
 
-       <modal v-show="showModal" @close="showModal = false">
-           <template slot="header">Header</template>
-           <template slot="content">Content</template>
-           <template slot="footer">
-                <button class="button is-success" @click="showModal = false">Save changes</button>
-                <button class="button" @click="showModal=false">Cancel</button>
-           </template>
-       </modal>
-       <button type="button" class="btn btn-outline-primary" @click="showModal = !showModal">Click to show modal</button>
+       <progress-view inline-template>
+          <div>
+                <h1>Your progress is {{completionRate}}%.</h1>
+                <button @click="completionRate+=10" class="button is-success">Update Completion</button>
+          </div>
+       </progress-view>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>

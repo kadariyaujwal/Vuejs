@@ -1,34 +1,11 @@
-
-Vue.component('modal',{
-    template:`
-        <div class="modal is-active">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-
-                <header class="modal-card-head">
-                    <p class="modal-card-title"><slot name="header"></slot></p>
-                    <button class="delete" aria-label="close" @click="$emit('close')"></button>
-                </header>
-
-                <section class="modal-card-body">
-                    <slot name="content"></slot>
-                </section>
-
-                <footer class="modal-card-foot">
-                    <slot name="footer">
-                        <button class="button is-success" @click="$emit('close')">Okay</button>
-                    </slot>
-                </footer>
-            </div>
-        </div>
-    `
-});
+Vue.component('progress-view',{  //Its good practice to name inline templates using {name}-view
+    data(){
+        return{
+            completionRate:50
+        }
+    }
+})
 
 new Vue({
     el: '#app',
-    data(){
-        return{
-            showModal:false
-        }
-    }
 });
