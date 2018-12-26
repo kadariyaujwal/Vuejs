@@ -12,13 +12,12 @@
 
 <body>
     <div class="" id="app">
-
-        <div class="container">
-
-            <message title="hello world" body="lorem ipsum dolor sit amet."></message>
-            <message title="hello earth" body="lorem ipsum dolor sit amet."></message>
-           
-        </div>
+       <div class="box">
+           <modal v-show="showModal" @close="showModal=false">
+               <p>My awesome modal</p>
+           </modal>
+           <button @click="showModal=true">Show modal</button>
+       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
